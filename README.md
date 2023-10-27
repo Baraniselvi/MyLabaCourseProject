@@ -1,2 +1,2 @@
 # MyLabaCourseProject
-Laba Course Assigments
+Laba Course Assignments
