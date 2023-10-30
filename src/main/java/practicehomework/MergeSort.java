@@ -1,14 +1,18 @@
-package com.practice;
+package practicehomework;
+
+import java.util.Scanner;
 
 public class MergeSort {
 
-    public void merge(int[] num, int left, int mid, int right) {
+    public static void merge(int[] num, int left, int mid, int right) {
 
         int s1 = mid - left + 1;
+        //finding size of subaarray
         int s2 = right - mid;
 
         int[] ltemp = new int[s1];
         int[] rtemp = new int[s2];
+        //creating temporary array ltemp and rtemp
 
         for (int i = 0; i < s1; i++)
             ltemp[i] = num[left + i];
@@ -43,13 +47,13 @@ public class MergeSort {
     }
 
 
-    public void sort(int num[], int left, int right) {
+    public void msort(int[] num, int left, int right) {
 
 
         if (left < right) {
             int mid = (left + right) / 2;
-            sort(num, left, mid);
-            sort(num, mid + 1, right);
+            msort(num, left, mid);
+            msort(num, mid + 1, right);
             merge(num, left, mid, right);
 
         }
@@ -60,23 +64,41 @@ public class MergeSort {
 
 
         int n = num.length;
-        for (int s = 0; s < n; s++) {
-            System.out.println(num[s]);
+        for (int i = 0; i < n; i++) {
+            System.out.println(num[i]);
         }
+
 
     }
 
     public static void main(String[] args) {
 
 
-        int[] num = {12, 34, 55, 39, 11, 2, 5, 78};
-        System.out.println("Before MergeSort");
-        printarr(num);
-        MergeSort obj = new MergeSort();
-        obj.sort(num,0,num.length-1);
-        System.out.println("After MergeSort");
-        printarr(num);
+        if (args.length == 0) {
+
+            System.out.println("No input");
+            return;
+        }
 
 
+        int[] num = new int[args.length];
+
+
+        {
+
+
+            for (int i = 0; i < args.length; i++) {
+                num[i] = Integer.parseInt(args[i]);
+
+            }
+            System.out.println("Before mergesort");
+            printarr(num);
+            System.out.println("After sorting");
+            MergeSort obj = new MergeSort();
+            obj.msort(num, 0, num.length-1);
+            printarr(num);
+
+
+        }
     }
 }
